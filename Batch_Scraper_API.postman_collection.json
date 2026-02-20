@@ -1,0 +1,159 @@
+{
+  "info": {
+    "name": "Batch Scraper API",
+    "description": "Complete API collection for batch scraping lab tests across all providers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        },
+        "description": "Verify API server is running"
+      },
+      "response": []
+    },
+    {
+      "name": "02. Start Batch Scraping (All Tests)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"total_batches\": null, \"batch_size\": 10}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/batch/start",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "batch", "start"]
+        },
+        "description": "Start scraping all 103 tests in 11 batches of 10 tests each\nEstimated time: ~23 minutes"
+      },
+      "response": []
+    },
+    {
+      "name": "02b. Start Batch Scraping (Sample - 1 Batch)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"total_batches\": 1, \"batch_size\": 10}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/batch/start",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "batch", "start"]
+        },
+        "description": "Start scraping only 1 batch (10 tests)\nEstimated time: ~2-3 minutes\nUseful for testing"
+      },
+      "response": []
+    },
+    {
+      "name": "02c. Start Batch Scraping (Custom Size)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"total_batches\": null, \"batch_size\": 20}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/batch/start",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "batch", "start"]
+        },
+        "description": "Start scraping with custom batch size\n103 tests ÷ 20 batch_size = 6 batches\nFewer, longer batches"
+      },
+      "response": []
+    },
+    {
+      "name": "03. Get Batch Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/batch/status",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "batch", "status"]
+        },
+        "description": "Get current batch scraping progress\nIncludes:\n- Current batch number\n- Total batches\n- Progress percentage\n- Individual batch results\n\nRun this repeatedly to monitor progress"
+      },
+      "response": []
+    },
+    {
+      "name": "04. Reset Batch State",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"force\": false}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/batch/reset",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "batch", "reset"]
+        },
+        "description": "Reset batch state for clean restart\nWith force=false: prevents reset if scraping is running\nWith force=true: forces reset regardless of state"
+      },
+      "response": []
+    },
+    {
+      "name": "04b. Force Reset Batch State",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"force\": true}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/batch/reset",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "batch", "reset"]
+        },
+        "description": "Force reset batch state even if scraping in progress\nUse only if stuck or debugging"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ]
+}

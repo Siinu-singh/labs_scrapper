@@ -1,0 +1,26 @@
+{
+  "last_completed_batch": 1,
+  "total_batches": 1,
+  "batch_size": 5,
+  "current_batch": 1,
+  "status": "completed",
+  "started_at": "2026-02-20T15:21:37.436386",
+  "batches": {
+    "1": {
+      "status": "completed",
+      "completed_at": "2026-02-20T15:22:47.904735",
+      "results": {
+        "batch": 1,
+        "success": true,
+        "total_tests": 5,
+        "total_operations": 20,
+        "successful": 17,
+        "failed": 3,
+        "success_rate": 85.0,
+        "saved_count": 17,
+        "duration_seconds": 70.45960330963135
+      }
+    }
+  },
+  "completed_at": "2026-02-20T15:22:47.905473"
+}
