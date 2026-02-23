@@ -16,8 +16,9 @@ logger = setup_logger(__name__)
 
 class BatchTestScraper:
     def __init__(self):
-        self.engine = create_engine(settings.DATABASE_URL, echo=False)
-        self.SessionLocal = sessionmaker(bind=self.engine)
+        # Lazy initialize database connection - don't create engine in __init__
+        self._engine = None
+        self._SessionLocal = None
         self.start_time = None
         self.results = []
         self.stats = {
@@ -31,6 +32,20 @@ class BatchTestScraper:
                 "1mg": {"success": 0, "failed": 0},
             }
         }
+    
+    @property
+    def engine(self):
+        """Lazy load database engine"""
+        if self._engine is None:
+            self._engine = create_engine(settings.DATABASE_URL, echo=False)
+        return self._engine
+    
+    @property
+    def SessionLocal(self):
+        """Lazy load session factory"""
+        if self._SessionLocal is None:
+            self._SessionLocal = sessionmaker(bind=self.engine)
+        return self._SessionLocal
 
     def print_header(self, title):
         print(f"\n{'='*70}")
