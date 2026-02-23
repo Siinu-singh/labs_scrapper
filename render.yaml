@@ -20,12 +20,6 @@ services:
           name: lab_scraper_db
           property: connectionString
 
-  - type: cron
-    name: daily-batch-scraper
-    env: bash
-    schedule: "30 18 * * *"
-    startCommand: bash trigger_batch.sh
-
 databases:
   - name: lab_scraper_db
     databaseName: lab_scraper_db
