@@ -2,8 +2,13 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from src.utils.logger import setup_logger
 import random
+import logging
 
 logger = setup_logger(__name__)
+
+# Suppress Selenium service process errors (PermissionError from chromedriver cleanup)
+logging.getLogger('selenium.webdriver.common.service').setLevel(logging.CRITICAL)
+logging.getLogger('selenium.webdriver.chrome.service').setLevel(logging.CRITICAL)
 
 def create_stealth_driver():
     """Create undetectable Chrome driver that mimics real user browser"""
@@ -16,6 +21,8 @@ def create_stealth_driver():
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
     chrome_options.add_argument("--window-size=1920,1080")
     chrome_options.add_argument("--start-maximized")
+    chrome_options.add_argument("--disable-logging")
+    chrome_options.add_argument("--disable-extensions")
     
     # Realistic user agent
     chrome_version = random.randint(120, 131)

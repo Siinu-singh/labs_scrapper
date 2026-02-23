@@ -66,16 +66,24 @@ class BatchTestScraper:
             db.close()
 
     async def scrape_test_all_labs(self, test_id: int, test_name: str):
-        """Scrape one test from all 4 labs concurrently"""
+        """Scrape one test from 2 labs concurrently"""
         logger.info(f"Starting scrape for test: {test_name}")
         
-        results = await asyncio.gather(
+        # Pair 1 (Orange + Redcliffe - run together):
+            # Pair 1 (Orange + Redcliffe - run together):
+        results_pair1 = await asyncio.gather(
             self.scrape_and_record(test_id, test_name, "orange", scrape_orange),
             self.scrape_and_record(test_id, test_name, "redcliffe", scrape_redcliffe),
-            self.scrape_and_record(test_id, test_name, "lalpathlabs", scrape_lalpathlabs),
-            self.scrape_and_record(test_id, test_name, "1mg", scrape_1mg),
             return_exceptions=True
         )
+        # Then Pair 2 (1mg + Lal Path Labs - run together after Pair 1 finishes):
+        results_pair2 = await asyncio.gather(
+            self.scrape_and_record(test_id, test_name, "1mg", scrape_1mg),
+            self.scrape_and_record(test_id, test_name, "lalpathlabs", scrape_lalpathlabs),
+            return_exceptions=True
+    )
+        # Combine results:
+        results = results_pair1 + results_pair2
         
         return {
             "test_id": test_id,

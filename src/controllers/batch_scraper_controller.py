@@ -1,7 +1,3 @@
-"""
-Batch scraper controller for handling batch scraping API requests
-"""
-
 from typing import Dict, Any
 from src.services.batch_scraper_service import BatchScraperService
 from src.utils.logger import setup_logger

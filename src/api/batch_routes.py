@@ -1,7 +1,3 @@
-"""
-Batch scraper API routes
-"""
-
 from fastapi import APIRouter, BackgroundTasks, HTTPException, status
 from src.schemas.scraper_schemas import (
     StartBatchScrapingRequest,

@@ -123,5 +123,8 @@ def _scrape_redcliffe_sync(test_name: str) -> list[dict]:
             try:
                 driver.quit()
                 logger.debug("Chrome driver closed")
+            except PermissionError:
+                # ChromeDriver already terminated, suppress the signal error
+                logger.debug("Driver terminated (signal error ignored)")
             except Exception as e:
                 logger.debug(f"Driver cleanup warning (can be ignored): {str(e)}")

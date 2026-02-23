@@ -1,7 +1,3 @@
-"""
-Batch scraper service for managing batch-wise test scraping
-"""
-
 import asyncio
 from typing import Dict, Any, Optional
 from batch_test_scraper import BatchTestScraper

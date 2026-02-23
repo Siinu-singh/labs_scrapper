@@ -4,23 +4,23 @@
   "batch_size": 5,
   "current_batch": 1,
   "status": "completed",
-  "started_at": "2026-02-20T15:21:37.436386",
+  "started_at": "2026-02-23T13:21:04.621998",
   "batches": {
     "1": {
       "status": "completed",
-      "completed_at": "2026-02-20T15:22:47.904735",
+      "completed_at": "2026-02-23T13:22:21.044957",
       "results": {
         "batch": 1,
         "success": true,
         "total_tests": 5,
         "total_operations": 20,
-        "successful": 17,
-        "failed": 3,
-        "success_rate": 85.0,
-        "saved_count": 17,
-        "duration_seconds": 70.45960330963135
+        "successful": 16,
+        "failed": 4,
+        "success_rate": 80.0,
+        "saved_count": 0,
+        "duration_seconds": 76.40909457206726
       }
     }
   },
-  "completed_at": "2026-02-20T15:22:47.905473"
+  "completed_at": "2026-02-23T13:22:21.045801"
 }
