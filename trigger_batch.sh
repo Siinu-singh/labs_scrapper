@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Trigger daily batch scraping
-# This script is called by Render's cron job at 2 AM UTC daily
+# This script is called by Render's cron job at 12 AM IST (18:30 UTC) daily
 
 BATCH_SIZE=3
 API_URL="https://lab-scraper-api.onrender.com/api/v1/batch/start"
