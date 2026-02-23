@@ -23,7 +23,7 @@ services:
   - type: cron
     name: daily-batch-scraper
     schedule: "0 2 * * *"
-    startCommand: curl -X POST https://lab-scraper-api.onrender.com/api/v1/batch/start -H "Content-Type: application/json" -d '{"batch_size": 3}'
+    startCommand: bash trigger_batch.sh
 
 databases:
   - name: lab_scraper_db
