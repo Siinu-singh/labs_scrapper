@@ -22,6 +22,5 @@ services:
 
 databases:
   - name: lab_scraper_db
-    databaseName: lab_scraper_db
     plan: free
     region: oregon
