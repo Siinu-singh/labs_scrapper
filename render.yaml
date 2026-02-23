@@ -22,6 +22,7 @@ services:
 
   - type: cron
     name: daily-batch-scraper
+    env: bash
     schedule: "30 18 * * *"
     startCommand: bash trigger_batch.sh
 
