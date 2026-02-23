@@ -13,7 +13,7 @@ class BatchScraperService:
         self.state_manager = BatchStateManager()
         self.scraper = None
     
-    async def start_batch_scraping(self, total_batches: Optional[int] = None, batch_size: int = 10) -> Dict[str, Any]:
+    async def start_batch_scraping(self, total_batches: Optional[int] = None, batch_size: int = 3) -> Dict[str, Any]:
         """
         Start batch scraping for all tests or specified number of batches
         

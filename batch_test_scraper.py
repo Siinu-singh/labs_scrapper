@@ -271,7 +271,7 @@ class BatchTestScraper:
         finally:
             db.close()
 
-    async def run(self, batch_num: int = 1, batch_size: int = 10, total_batches: int = 1):
+    async def run(self, batch_num: int = 1, batch_size: int = 3, total_batches: int = 1):
         """Main execution method with batch support"""
         self.print_header(f"🚀 BATCH SCRAPER - Batch {batch_num}/{total_batches}")
         

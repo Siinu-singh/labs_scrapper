@@ -16,3 +16,7 @@ dist/
 build/
 *.egg-info/
 .agents
+.env
+batch_state.json
+*.db
+*.sqlite
