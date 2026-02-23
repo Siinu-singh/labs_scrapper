@@ -22,7 +22,7 @@ services:
 
   - type: cron
     name: daily-batch-scraper
-    runtime: python_3_11
+    runtime: python-3.11
     schedule: "30 18 * * *"
     startCommand: bash trigger_batch.sh
 
